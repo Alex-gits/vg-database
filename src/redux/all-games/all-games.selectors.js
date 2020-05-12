@@ -4,7 +4,7 @@ const selectAllGames = state => state.allGames;
 
 export const selectAllGamesCollection = createSelector(
   [selectAllGames],
-  allGames => allGames.allGamesCollection ? allGames.allGamesCollection : null
+  allGames => allGames.allGamesCollection ? allGames.allGamesCollection : []
 );
 
 export const selectAllGamesFetchingStatus = createSelector(

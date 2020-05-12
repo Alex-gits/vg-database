@@ -15,7 +15,7 @@ const GamePreviewItem = ({ game, history }) => {
     if (video === null) return;
     if (typeof video.src !== 'string') return;
 
-    if (video.src.length >= 20) {
+    if (video.src.length >= 15) {
       video.play();
     } else {
       return;

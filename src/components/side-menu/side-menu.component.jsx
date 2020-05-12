@@ -14,30 +14,6 @@ const SideMenu = () => (
     </h3>
 
     <div className='side-menu__box'>
-      <p className='box-title'>Top Games</p>
-      <ul className='box-list'>
-        <li className="box-list__item">
-          <Link className='box-list__link' to='/'>
-            <i className="fas fa-trophy"></i>
-            Best of the year
-          </Link>
-        </li>
-        <li className="box-list__item">
-          <Link className='box-list__link' to='/'>
-            <i className="fas fa-bolt"></i>
-            Popular in 2018
-          </Link>
-        </li>
-        <li className="box-list__item">
-          <Link className='box-list__link' to='/'>
-            <i className="fas fa-crown"></i>
-            All time top 250
-          </Link>
-        </li>
-      </ul>
-    </div>
-
-    <div className='side-menu__box'>
       <p className='box-title'>New Releases</p>
       <ul className='box-list'>
         <li className="box-list__item">
@@ -56,6 +32,30 @@ const SideMenu = () => (
           <Link className='box-list__link' to='/'>
             <i className="fas fa-fast-forward"></i>
             Next week
+          </Link>
+        </li>
+      </ul>
+    </div>
+
+    <div className='side-menu__box'>
+      <p className='box-title'>Top Games</p>
+      <ul className='box-list'>
+        <li className="box-list__item">
+          <Link className='box-list__link' to='/top/oftheyear'>
+            <i className="fas fa-trophy"></i>
+            Best of the year
+          </Link>
+        </li>
+        <li className="box-list__item">
+          <Link className='box-list__link' to='/top/2018'>
+            <i className="fas fa-bolt"></i>
+            Best of 2018
+          </Link>
+        </li>
+        <li className="box-list__item">
+          <Link className='box-list__link' to='/top'>
+            <i className="fas fa-crown"></i>
+            All time top 100
           </Link>
         </li>
       </ul>

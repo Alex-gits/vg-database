@@ -1,0 +1,39 @@
+.top-game {
+  &__wrapper {
+    width: 90%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid grey;
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  &__position {
+    margin-right: 5px;
+    text-decoration: none;
+  }
+
+  &__score {
+    color: #0be881;
+    font-weight: 700;
+    margin-left: 10px;
+  }
+
+  &__title {
+    cursor: pointer;
+    transition: opacity .2s linear;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &__info {
+    opacity: 0.5;
+    margin-right: 5px;
+  }
+}

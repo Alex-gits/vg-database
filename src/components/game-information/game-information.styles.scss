@@ -1,5 +1,6 @@
 .game-overview {
-  padding: 0 150px 70px;
+  padding: 25px 150px 70px;
+  width: 1200px;
 
   &__image-wrapper {
     height: 400px;
@@ -17,11 +18,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-
-  &__title {
-    font-size: 60px;
-    font-family: 'Audiowide', cursive;
   }
 
   &__about-title {

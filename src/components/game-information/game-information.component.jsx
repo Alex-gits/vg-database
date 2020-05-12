@@ -2,6 +2,8 @@ import React from 'react';
 
 import './game-information.styles.scss';
 
+import SectionHeader from '../section-header/section-header.component'
+
 const GameInformation = ({ game, croppedPoster }) => (
   <div className='game-overview'>
     <div 
@@ -14,7 +16,7 @@ const GameInformation = ({ game, croppedPoster }) => (
         <div>
           Platforms:
         </div>
-        <h2 className='game-overview__title'>{game.name}</h2>
+        <SectionHeader>{game.name}</SectionHeader>
       </div>
     </div>
     <div className='game-overview__content'>

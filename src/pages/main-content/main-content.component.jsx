@@ -7,11 +7,12 @@ import './main-content.styles.scss';
 import { selectTrendingGames, selectTrendingGamesStatus } from '../../redux/trending/trending.selectors';
 
 import GamePreviewItem from '../../components/game-preview-item/game-preview-item.component';
+import SectionHeader from '../../components/section-header/section-header.component';
 import Spinner from '../../components/spinner/spinner.component';
 
 const MainContent = ({ trendingGames, loading }) => (
   <div className='main-content'>
-    <h2 className='main-content__title'>Trending Games</h2>
+    <SectionHeader>Trending Games</SectionHeader>
     <div className='game-preview__wrapper'>
       {
         loading ? <Spinner /> : trendingGames.map(game => <GamePreviewItem game={game} key={game.id} />)
