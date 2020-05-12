@@ -1,0 +1,77 @@
+.game-overview {
+  padding: 0 150px 70px;
+
+  &__image-wrapper {
+    height: 400px;
+    width: 100%;
+    border-radius: 10px;
+    background-position: 40%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &__title-wrapper {
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 60px;
+    font-family: 'Audiowide', cursive;
+  }
+
+  &__about-title {
+    font-size: 30px;
+    color: #eb3b5a;
+    margin-bottom: 15px;
+  }
+
+  &__about-text {
+    h3 {
+      font-size: 26px;
+      margin: 5px 0;
+    }
+
+    p {
+      font-size: 16px;
+      padding: 0;
+    }
+  }
+
+  &__details {
+    margin: 30px auto;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    color: grey;
+
+    &-item {
+      width: 35%;
+      margin-bottom: 20px;
+
+      span {
+        text-decoration: underline;
+        color: white;
+        margin-right: 8px;
+      }
+
+      .metacritic {
+        display: block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border: 1px solid gray;
+        color: #00a8ff;
+        text-decoration: none;
+        font-weight: 700;
+      }
+    }
+  }
+}
+

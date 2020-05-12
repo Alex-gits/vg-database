@@ -1,0 +1,77 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 0 35px;
+
+  .logo-container {
+    height: 100%;
+    width: 40px;
+    padding-top: 22px;
+
+    .logo {
+      fill: #eb3b5a;
+      display: inline;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 20px;
+    font-family: 'Audiowide', cursive;
+  }
+
+  &__input-wrapper {
+    width: 75%;
+    height: 35px;
+    background-color: #3b3939;
+    border-radius: 20px;
+    padding-left: 10px;
+    transition: all .2s linear;
+
+    &:hover {
+      background-color: white;
+    }
+
+    &:focus-within {
+      background-color: white;
+    }
+  }
+
+  &__input {
+    width: 98%;
+    height: 100%;
+    background-color: transparent;
+    font-size: 18px;
+    border-radius: 20px;
+    font-size: 18px;
+    color: white;
+    transition: all .2s linear;
+
+    &::placeholder {
+      font-size: 16px;
+    }
+
+    &:focus {
+      color: black;
+    }
+
+    &-icon {
+      margin-right: 10px;
+      color: black;
+      font-size: 15px;
+    }
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  &__title-wrapper {
+    font-weight: 700;
+    font-size: 20px;
+    font-family: 'Audiowide', cursive;
+  }
+}

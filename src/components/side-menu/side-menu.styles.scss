@@ -1,0 +1,51 @@
+.side-menu {
+  padding: 70px 0 0 35px;
+  width: 280px;
+
+  &__home {
+    font-family: 'Audiowide', cursive;
+    margin-bottom: 45px;
+    font-size: 26px;
+    
+    a {
+      color: #eb3b5a;
+    }
+  }
+
+  &__box {
+    margin-bottom: 45px;
+  }
+}
+
+.box-title {
+  font-family: 'Audiowide', cursive;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.box-list {
+  list-style: none;
+
+  &__item {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  &__link {
+    position: relative;
+    padding-left: 30px;
+
+    &:hover i {
+      color: #eb3b5a;
+    }
+
+    i {
+      position: absolute;
+      top: 3px;
+      left: 11px;
+      transform: translateX(-50%);
+      transition: color .1s linear;
+    }
+  }
+}

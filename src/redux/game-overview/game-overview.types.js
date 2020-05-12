@@ -1,0 +1,7 @@
+const GameOverviewTypes = {
+  FETCH_GAME_START: 'FETCH_GAME_START',
+  FETCH_GAME_SUCCESS: 'FETCH_GAME_SUCCESS',
+  FETCH_GAME_FAILURE: 'FETCH_GAME_FAILURE'
+}
+
+export default GameOverviewTypes;
