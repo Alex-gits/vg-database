@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -21,23 +21,32 @@ const TopList = ({ top100, top2018, topYear, loading, fetchTopGamesStart, fetchT
     if (match.path === '/top/oftheyear') fetchTopOfTheYearStart();
     if (match.path === '/top') fetchTopGamesStart();
     if (match.path === '/top/2018') fetchTopOf2018Start();
-  }, [fetchTopGamesStart, fetchTopOfTheYearStart, fetchTopOf2018Start, match.path])
-
-  let array = [];
-  if (match.path === '/top') array = top100;
-  if (match.path === '/top/oftheyear') array = topYear;
-  if (match.path === '/top/2018') array = top2018;
+  }, [fetchTopGamesStart, fetchTopOfTheYearStart, fetchTopOf2018Start, match.path]);
 
   return (
     <div className='top-list'>
       <div className='top-list__image-wrapper'>
         <div className='game-overview__title-wrapper'>
-          <SectionHeader>Top 100 Games of all time</SectionHeader>
+          <SectionHeader>
+            {
+              match.path === '/top'
+              ? 'Top games of all Time'
+              : match.path === '/top/oftheyear'
+              ? 'Top games of the last Year'
+              : 'Top games of 2018'
+            }
+          </SectionHeader>
         </div>
       </div>
       <div>
         {
-          loading ? <Spinner /> : array.map((game, index) => <TopListItem key={game.id} game={game} index={index} />)
+          loading
+          ? <Spinner />
+          : match.path === '/top' 
+          ? top100.map((game, index) => <TopListItem key={game.id} game={game} index={index} />)
+          : match.path === '/top/oftheyear'
+          ? topYear.map((game, index) => <TopListItem key={game.id} game={game} index={index} />)
+          : top2018.map((game, index) => <TopListItem key={game.id} game={game} index={index} />)
         }
       </div>
     </div>
@@ -48,13 +57,13 @@ const mapDispatchToProps = dispatch => ({
   fetchTopGamesStart: () => dispatch(fetchTopGamesStart()),
   fetchTopOfTheYearStart: () => dispatch(fetchTopOfTheYearStart()),
   fetchTopOf2018Start: () => dispatch(fetchTopOf2018Start())
-})
+});
 
 const mapStateToProps = createStructuredSelector({
   top100: selectTop100,
   topYear: selectBestOfTheYear,
   top2018: selectBestOf2018,
   loading: selectBestGamesFetchingStatus
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopList);

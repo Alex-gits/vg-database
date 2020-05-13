@@ -4,7 +4,7 @@
 
   &__image-wrapper {
     background-image: linear-gradient(rgba(15, 15, 15, 0), rgb(21, 21, 21)), linear-gradient(rgba(21, 21, 21, 0.6), rgba(21, 21, 21, 0.3)), url('../../assets/trophy3.jpg');
-    margin-bottom: 50px;
+    margin-bottom: 15px;
     width: 90%;
     height: 300px;
     border-radius: 10px;
@@ -12,6 +12,8 @@
     background-size: cover;
     background-repeat: no-repeat;
   }
+
+  &__title-wrapper {
+    text-align: center;
+  }
 }
-
-
