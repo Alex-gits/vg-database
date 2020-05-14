@@ -18,9 +18,9 @@ import {
 
 const TopList = ({ top100, top2018, topYear, loading, fetchTopGamesStart, fetchTopOf2018Start, fetchTopOfTheYearStart, match }) => {
   useEffect(() => {
-    if (match.path === '/top/oftheyear') fetchTopOfTheYearStart();
     if (match.path === '/top') fetchTopGamesStart();
     if (match.path === '/top/2018') fetchTopOf2018Start();
+    if (match.path === '/top/top-of-the-year') fetchTopOfTheYearStart();
   }, [fetchTopGamesStart, fetchTopOfTheYearStart, fetchTopOf2018Start, match.path]);
 
   return (
@@ -31,7 +31,7 @@ const TopList = ({ top100, top2018, topYear, loading, fetchTopGamesStart, fetchT
             {
               match.path === '/top'
               ? 'Top games of all Time'
-              : match.path === '/top/oftheyear'
+              : match.path === '/top/top-of-the-year'
               ? 'Top games of the last Year'
               : 'Top games of 2018'
             }
@@ -44,7 +44,7 @@ const TopList = ({ top100, top2018, topYear, loading, fetchTopGamesStart, fetchT
           ? <Spinner />
           : match.path === '/top' 
           ? top100.map((game, index) => <TopListItem key={game.id} game={game} index={index} />)
-          : match.path === '/top/oftheyear'
+          : match.path === '/top/top-of-the-year'
           ? topYear.map((game, index) => <TopListItem key={game.id} game={game} index={index} />)
           : top2018.map((game, index) => <TopListItem key={game.id} game={game} index={index} />)
         }

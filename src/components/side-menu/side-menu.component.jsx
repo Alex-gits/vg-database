@@ -17,19 +17,19 @@ const SideMenu = () => (
       <p className='box-title'>New Releases</p>
       <ul className='box-list'>
         <li className="box-list__item">
-          <Link className='box-list__link' to='/'>
+          <Link className='box-list__link' to='/releases'>
             <i className="fas fa-star"></i>
-            Last 30 days
+            Last month
           </Link>
         </li>
         <li className="box-list__item">
-          <Link className='box-list__link' to='/'>
+          <Link className='box-list__link' to='/releases/last-week'>
             <i className="fas fa-fire"></i>
-            This week
+            Last week
           </Link>
         </li>
         <li className="box-list__item">
-          <Link className='box-list__link' to='/'>
+          <Link className='box-list__link' to='/releases/next-week'>
             <i className="fas fa-fast-forward"></i>
             Next week
           </Link>
@@ -41,7 +41,7 @@ const SideMenu = () => (
       <p className='box-title'>Top Games</p>
       <ul className='box-list'>
         <li className="box-list__item">
-          <Link className='box-list__link' to='/top/oftheyear'>
+          <Link className='box-list__link' to='/top/top-of-the-year'>
             <i className="fas fa-trophy"></i>
             Best of the year
           </Link>

@@ -6,7 +6,7 @@ import './game-preview-item.styles.scss';
 const GamePreviewItem = ({ game, history }) => {
   const genres = Object.values(game.genres);
   const gamePoster = game.background_image;
-  const croppedPoster = gamePoster.slice(0, 28) + "crop/600/400/" + gamePoster.slice(28);
+  const croppedPoster = gamePoster ? gamePoster.slice(0, 28) + "crop/600/400/" + gamePoster.slice(28) : 'https://optica-nadin.ru/static/img/no-img.png';
 
   const playVideo = e => {
     const videoWrapper = e.target.closest('.game-preview');
@@ -43,7 +43,8 @@ const GamePreviewItem = ({ game, history }) => {
             style={{
               backgroundImage: `url(${croppedPoster})`
             }}
-          ></div>
+          >
+          </div>
         </div>
       </div>
       <div className='game-preview__footer'>
