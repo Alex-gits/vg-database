@@ -10,9 +10,7 @@ const INITIAL_STATE = {
 
 const releasesReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ReleasesActionTypes.FETCH_LAST_MONTH_START:
-    case ReleasesActionTypes.FETCH_LAST_WEEK_START:
-    case ReleasesActionTypes.FETCH_NEXT_WEEK_START:
+    case ReleasesActionTypes.FETCH_RELEASES_START:
       return {
         ...state,
         loading: true
@@ -44,9 +42,7 @@ const releasesReducer = (state = INITIAL_STATE, action) => {
         loading: false,
         error: null
       }
-    case ReleasesActionTypes.FETCH_LAST_MONTH_FAILURE:
-    case ReleasesActionTypes.FETCH_LAST_WEEK_FAILURE:
-    case ReleasesActionTypes.FETCH_NEXT_WEEK_FAILURE:
+    case ReleasesActionTypes.FETCH_RELEASES_FAILURE:
       return {
         ...state,
         error: action.payload,

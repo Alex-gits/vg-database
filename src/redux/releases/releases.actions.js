@@ -1,7 +1,8 @@
 import ReleasesActionTypes from './releases.types';
 
-export const fetchLastMonthReleasesStart = () => ({
-  type: ReleasesActionTypes.FETCH_LAST_MONTH_START
+export const fetchReleasesStart = period => ({
+  type: ReleasesActionTypes.FETCH_RELEASES_START,
+  payload: period
 });
 
 export const fetchLastMonthReleasesSuccess = last30DaysCollection => ({
@@ -9,27 +10,10 @@ export const fetchLastMonthReleasesSuccess = last30DaysCollection => ({
   payload: last30DaysCollection
 });
 
-export const fetchLastMonthReleasesFailure = error => ({
-  type: ReleasesActionTypes.FETCH_LAST_MONTH_FAILURE,
-  payload: error
-});
-
-export const fetchLastWeekReleasesStart = () => ({
-  type: ReleasesActionTypes.FETCH_LAST_WEEK_START
-});
 
 export const fetchLastWeekReleasesSuccess = lastWeekCollection => ({
   type: ReleasesActionTypes.FETCH_LAST_WEEK_SUCCESS,
   payload: lastWeekCollection
-});
-
-export const fetchLastWeekReleasesFailure = error => ({
-  type: ReleasesActionTypes.FETCH_LAST_WEEK_FAILURE,
-  payload: error
-});
-
-export const fetchNextWeekReleasesStart = () => ({
-  type: ReleasesActionTypes.FETCH_NEXT_WEEK_START
 });
 
 export const fetchNextWeekReleasesSuccess = nextWeekCollection => ({
@@ -37,7 +21,7 @@ export const fetchNextWeekReleasesSuccess = nextWeekCollection => ({
   payload: nextWeekCollection
 });
 
-export const fetchNextWeekReleasesFailure = error => ({
-  type: ReleasesActionTypes.FETCH_NEXT_WEEK_FAILURE,
+export const fetchReleasesFailure = error => ({
+  type: ReleasesActionTypes.FETCH_RELEASES_FAILURE,
   payload: error
 });

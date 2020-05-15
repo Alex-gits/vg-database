@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 
 import './top-list.styles.scss';
 
@@ -8,62 +7,34 @@ import TopListItem from '../top-list-item/top-list-item.component';
 import Spinner from '../spinner/spinner.component';
 import SectionHeader from '../section-header/section-header.component';
 
-import { fetchTopGamesStart, fetchTopOfTheYearStart, fetchTopOf2018Start } from '../../redux/best-games/best-games.actions';
+import { selectTopGames, selectBestGamesFetchingStatus } from '../../redux/best-games/best-games.selectors';
 
-import { 
-  selectTop100, 
-  selectBestOfTheYear, 
-  selectBestOf2018, 
-  selectBestGamesFetchingStatus } from '../../redux/best-games/best-games.selectors';
-
-const TopList = ({ top100, top2018, topYear, loading, fetchTopGamesStart, fetchTopOf2018Start, fetchTopOfTheYearStart, match }) => {
-  useEffect(() => {
-    if (match.path === '/top') fetchTopGamesStart();
-    if (match.path === '/top/2018') fetchTopOf2018Start();
-    if (match.path === '/top/top-of-the-year') fetchTopOfTheYearStart();
-  }, [fetchTopGamesStart, fetchTopOfTheYearStart, fetchTopOf2018Start, match.path]);
-
-  return (
-    <div className='top-list'>
-      <div className='top-list__image-wrapper'>
-        <div className='game-overview__title-wrapper'>
-          <SectionHeader>
-            {
-              match.path === '/top'
-              ? 'Top games of all Time'
-              : match.path === '/top/top-of-the-year'
-              ? 'Top games of the last Year'
-              : 'Top games of 2018'
-            }
-          </SectionHeader>
-        </div>
-      </div>
-      <div>
-        {
-          loading
-          ? <Spinner />
-          : match.path === '/top' 
-          ? top100.map((game, index) => <TopListItem key={game.id} game={game} index={index} />)
-          : match.path === '/top/top-of-the-year'
-          ? topYear.map((game, index) => <TopListItem key={game.id} game={game} index={index} />)
-          : top2018.map((game, index) => <TopListItem key={game.id} game={game} index={index} />)
-        }
+const TopList = ({ bestGames, loading, time }) => (
+  <div className='top-list'>
+    <div className='top-list__image-wrapper'>
+      <div className='game-overview__title-wrapper'>
+        <SectionHeader>
+          {
+            time === 'best-of-all-time'
+            ? 'Top games of all Time'
+            : time === 'best-of-the-year'
+            ? 'Top games of the last Year'
+            : 'Top games of 2018'
+          }
+        </SectionHeader>
       </div>
     </div>
-  )
-};
+    <div>
+      {
+        loading ? <Spinner /> : bestGames.map((game, index) => <TopListItem key={game.id} game={game} index={index} />)
+      }
+    </div>
+  </div>
+);
 
-const mapDispatchToProps = dispatch => ({
-  fetchTopGamesStart: () => dispatch(fetchTopGamesStart()),
-  fetchTopOfTheYearStart: () => dispatch(fetchTopOfTheYearStart()),
-  fetchTopOf2018Start: () => dispatch(fetchTopOf2018Start())
-});
+const mapStateToProps = (state, props) => ({
+  bestGames: selectTopGames(props.time)(state),
+  loading: selectBestGamesFetchingStatus(state)
+})
 
-const mapStateToProps = createStructuredSelector({
-  top100: selectTop100,
-  topYear: selectBestOfTheYear,
-  top2018: selectBestOf2018,
-  loading: selectBestGamesFetchingStatus
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(TopList);
+export default connect(mapStateToProps)(TopList);

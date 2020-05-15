@@ -10,9 +10,7 @@ const INITIAL_STATE = {
 
 const bestGamesReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case BestGamesActionTypes.FETCH_TOP_GAMES_START:
-    case BestGamesActionTypes.FETCH_TOP_OF_THE_YEAR_START:
-    case BestGamesActionTypes.FETCH_TOP_OF_2018_START:
+    case BestGamesActionTypes.FETCH_BEST_GAMES_START:
       return {
         ...state,
         loading: true
@@ -44,9 +42,7 @@ const bestGamesReducer = (state = INITIAL_STATE, action) => {
         loading: false,
         error: null
       }
-    case BestGamesActionTypes.FETCH_TOP_GAMES_FAILURE:
-    case BestGamesActionTypes.FETCH_TOP_OF_2018_FAILURE:
-    case BestGamesActionTypes.FETCH_TOP_OF_THE_YEAR_FAILURE:
+    case BestGamesActionTypes.FETCH_BEST_GAMES_FAILURE:
       return {
         ...state,
         error: action.payload,

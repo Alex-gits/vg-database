@@ -5,11 +5,9 @@ import ReleasesActionTypes from './releases.types';
 
 import { 
   fetchLastMonthReleasesSuccess, 
-  fetchLastMonthReleasesFailure,
   fetchLastWeekReleasesSuccess,
-  fetchLastWeekReleasesFailure,
   fetchNextWeekReleasesSuccess,
-  fetchNextWeekReleasesFailure } from './releases.actions';
+  fetchReleasesFailure,} from './releases.actions';
 
 const apiUrl = 'https://api.rawg.io/api/games?page_size=40&dates=';
 
@@ -28,56 +26,37 @@ const dates = {
   nextWeek: `${nextWeekFirstDay},${nextWeekLastDay}`
 }
 
-export function* fetchLastMonthAsync() {
+export function* fetchReleasesAsync({ payload }) {
   try {
-    const response = yield fetch(`${apiUrl}${dates.lastMonth}`);
-    const lastMonthReleases = yield response.json();
-  
-    yield put(fetchLastMonthReleasesSuccess(lastMonthReleases.results));
+    if (payload === 'last-month') {
+      const response = yield fetch(`${apiUrl}${dates.lastMonth}`);
+      const lastMonthReleases = yield response.json();
+    
+      yield put(fetchLastMonthReleasesSuccess(lastMonthReleases.results));
+    } else if (payload === 'last-week') {
+      const response = yield fetch(`${apiUrl}${dates.lastWeek}`);
+      const lastWeekReleases = yield response.json();
+    
+      yield put(fetchLastWeekReleasesSuccess(lastWeekReleases.results));
+    } else {
+      const response = yield fetch(`${apiUrl}${dates.nextWeek}`);
+      const nextWeekReleases = yield response.json();
+    
+      yield put(fetchNextWeekReleasesSuccess(nextWeekReleases.results));
+    }
+
   } catch (error) {
-    yield put(fetchLastMonthReleasesFailure(error))
+    yield put(fetchReleasesFailure(error))
   }
 }
 
-export function* fetchLastWeekAsync() {
-  try {
-    const response = yield fetch(`${apiUrl}${dates.lastWeek}`);
-    const lastWeekReleases = yield response.json();
-  
-    yield put(fetchLastWeekReleasesSuccess(lastWeekReleases.results));
-  } catch (error) {
-    yield put(fetchLastWeekReleasesFailure(error))
-  }
-}
-
-export function* fetchNextWeekAsync() {
-  try {
-    const response = yield fetch(`${apiUrl}${dates.nextWeek}`);
-    const nextWeekReleases = yield response.json();
-  
-    yield put(fetchNextWeekReleasesSuccess(nextWeekReleases.results));
-  } catch (error) {
-    yield put(fetchNextWeekReleasesFailure(error))
-  }
-}
-
-export function* onFetchLast30DaysStart() {
-  yield takeLatest(ReleasesActionTypes.FETCH_LAST_MONTH_START, fetchLastMonthAsync);
-}
-
-export function* onFetchLastWeekStart() {
-  yield takeLatest(ReleasesActionTypes.FETCH_LAST_WEEK_START, fetchLastWeekAsync);
-}
-
-export function* onFetchNextWeekStart() {
-  yield takeLatest(ReleasesActionTypes.FETCH_NEXT_WEEK_START, fetchNextWeekAsync);
+export function* onFetchReleasesStart() {
+  yield takeLatest(ReleasesActionTypes.FETCH_RELEASES_START, fetchReleasesAsync);
 }
 
 export function* releasesSagas() {
   yield all([
-    call(onFetchLast30DaysStart),
-    call(onFetchLastWeekStart),
-    call(onFetchNextWeekStart)
+    call(onFetchReleasesStart),
   ]);
 }
 

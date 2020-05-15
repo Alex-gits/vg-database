@@ -1,14 +1,23 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import ReleasesContainer from '../../components/releases-container/releases-container.component';
+import { fetchReleasesStart } from '../../redux/releases/releases.actions';
 
-const ReleasesPage = ({ match }) => (
-  <div>
-    <Route exact path={match.path} component={ReleasesContainer} />
-    <Route exact path={`${match.path}/last-week`} component={ReleasesContainer} />
-    <Route exact path={`${match.path}/next-week`} component={ReleasesContainer} />
-  </div>
-);
+const ReleasesPage = ({ match, fetchReleases }) => {
+  useEffect(() => {
+    fetchReleases(match.params.period);
+  }, [fetchReleases, match.params.period]);
 
-export default ReleasesPage;
+  return (
+    <div>
+      <ReleasesContainer period={match.params.period} />
+    </div>
+  )
+};
+
+const mapDispatchToProps = dispatch => ({
+  fetchReleases: period => dispatch(fetchReleasesStart(period))
+});
+
+export default connect(null, mapDispatchToProps)(ReleasesPage);

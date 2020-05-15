@@ -23,8 +23,8 @@ const Content = ({ fetchTrendingStart }) => {
         <Route exact path='/' component={MainContent} />
         <Route exact path='/games' component={AllGamesPage} />
         <Route path='/games/:slug' component={GameOverviewPage} />
-        <Route path='/top' component={TopGames} />
-        <Route path='/releases' component={ReleasesPage} />
+        <Route path='/top/:time' component={TopGames} />
+        <Route path='/releases/:period' component={ReleasesPage} />
       </Switch>
     </div>
   )

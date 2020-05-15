@@ -1,7 +1,8 @@
 import BestGamesActionTypes from './best-games.types';
 
-export const fetchTopGamesStart = () => ({
-  type: BestGamesActionTypes.FETCH_TOP_GAMES_START
+export const fetchBestGamesStart = time => ({
+  type: BestGamesActionTypes.FETCH_BEST_GAMES_START,
+  payload: time
 });
 
 export const fetchTopGamesSuccess = top100 => ({
@@ -9,27 +10,9 @@ export const fetchTopGamesSuccess = top100 => ({
   payload: top100
 });
 
-export const fetchTopGamesFailure = error => ({
-  type: BestGamesActionTypes.FETCH_TOP_GAMES_FAILURE,
-  payload: error
-});
-
-export const fetchTopOfTheYearStart = () => ({
-  type: BestGamesActionTypes.FETCH_TOP_OF_THE_YEAR_START
-});
-
 export const fetchTopOfTheYearSuccess = topOfTheYear => ({
   type: BestGamesActionTypes.FETCH_TOP_OF_THE_YEAR_SUCESS,
   payload: topOfTheYear
-});
-
-export const fetchTopOfTheYearFailure= error => ({
-  type: BestGamesActionTypes.FETCH_TOP_OF_THE_YEAR_FAILURE,
-  payload: error
-});
-
-export const fetchTopOf2018Start = () => ({
-  type: BestGamesActionTypes.FETCH_TOP_OF_2018_START
 });
 
 export const fetchTopOf2018Success = topOf2018 => ({
@@ -37,7 +20,7 @@ export const fetchTopOf2018Success = topOf2018 => ({
   payload: topOf2018
 });
 
-export const fetchTopOf2018Failure= error => ({
-  type: BestGamesActionTypes.FETCH_TOP_OF_2018_FAILURE,
+export const fetchBestGamesFailure = error => ({
+  type: BestGamesActionTypes.FETCH_BEST_GAMES_FAILURE,
   payload: error
 });
