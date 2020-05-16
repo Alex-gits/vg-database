@@ -7,6 +7,11 @@ export const selectAllGamesCollection = createSelector(
   allGames => allGames.allGamesCollection ? allGames.allGamesCollection : []
 );
 
+export const selectGenreGamesCollection = createSelector(
+  [selectAllGames],
+  allGames => allGames.genreGamesCollection ? allGames.genreGamesCollection : []
+);
+
 export const selectAllGamesFetchingStatus = createSelector(
   [selectAllGames],
   allGames => allGames.loading

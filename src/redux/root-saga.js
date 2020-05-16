@@ -5,6 +5,7 @@ import { allGamesSagas } from './all-games/all-games.saga';
 import { gameOverviewSaga } from './game-overview/game-overview.saga';
 import { bestGamesSagas } from './best-games/best-games.saga';
 import { releasesSagas } from './releases/releases.saga';
+import { genresSaga } from './genres/genres.saga';
 
 export default function* rootSaga() {
   yield all([
@@ -12,6 +13,7 @@ export default function* rootSaga() {
     call(allGamesSagas),
     call(gameOverviewSaga),
     call(bestGamesSagas),
-    call(releasesSagas)
+    call(releasesSagas),
+    call(genresSaga)
   ])
 }

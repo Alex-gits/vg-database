@@ -62,7 +62,9 @@ const SideMenu = () => (
     </div>
 
     <div className='side-menu__box'>
-      <p className='box-title'>Platforms</p>
+      <p className='box-title'>
+        <Link className='box-list__link' to='/genres'>Genres</Link>
+      </p>
       <ul className='box-list'>
         <li className="box-list__item">
           <Link className='box-list__link' to='/'>

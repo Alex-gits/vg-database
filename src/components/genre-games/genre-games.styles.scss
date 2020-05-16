@@ -1,0 +1,13 @@
+.genre-info {
+  margin-bottom: 45px;
+
+  &__description {
+    font-size: 18px;
+  }
+}
+
+.genre-games {
+  grid-template-columns: repeat(4, 382.75px);
+  display: grid;
+  grid-gap: 24px 24px;
+}

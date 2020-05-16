@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import './content.styles.scss';
 
@@ -9,29 +8,19 @@ import AllGamesPage from '../../pages/all-games/all-games.component';
 import GameOverviewPage from '../../pages/game-overview/game-overview.component';
 import TopGames from '../../pages/top-games/top-games.component';
 import ReleasesPage from '../../pages/releases/releases.component';
+import GenresPage from '../../pages/genres/genres.component';
 
-import { fetchTrendingStart } from '../../redux/trending/trending.actions';
+const Content = () => (
+  <div className='content'>
+    <Switch>
+      <Route exact path='/' component={MainContent} />
+      <Route exact path='/games' component={AllGamesPage} />
+      <Route path='/games/:slug' component={GameOverviewPage} />
+      <Route path='/top/:time' component={TopGames} />
+      <Route path='/releases/:period' component={ReleasesPage} />
+      <Route path='/genres' component={GenresPage} />
+    </Switch>
+  </div>
+);
 
-const Content = ({ fetchTrendingStart }) => {
-  useEffect(() => {
-    fetchTrendingStart();
-  }, [fetchTrendingStart]);
-
-  return (
-    <div className='content'>
-      <Switch>
-        <Route exact path='/' component={MainContent} />
-        <Route exact path='/games' component={AllGamesPage} />
-        <Route path='/games/:slug' component={GameOverviewPage} />
-        <Route path='/top/:time' component={TopGames} />
-        <Route path='/releases/:period' component={ReleasesPage} />
-      </Switch>
-    </div>
-  )
-};
-
-const mapDispatchToProps = dispath => ({
-  fetchTrendingStart: () => dispath(fetchTrendingStart())
-})
-
-export default connect(null, mapDispatchToProps)(Content);
+export default Content;

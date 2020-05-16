@@ -53,7 +53,7 @@ const GamePreviewItem = ({ game, history }) => {
           Genres:
           <div>
             {
-              genres.map(genre => <span className='genre-item' key={genre.slug}>{genre.name}</span>)
+              genres.filter((genre, index) => index < 4).map(genre => <span className='genre-item' key={genre.slug}>{genre.name}</span> )
             }
           </div>
         </div>
