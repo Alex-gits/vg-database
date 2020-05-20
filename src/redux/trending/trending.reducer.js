@@ -16,7 +16,7 @@ const trendingReducer = (state = INITIAL_STATE, action) => {
     case TrendingActionTypes.FETCH_TRENDING_SUCCESS:
       return {
         ...state,
-        trendingGames: action.payload,
+        trendingGames: [...state.trendingGames, ...action.payload],
         loading: false,
         error: null
       }

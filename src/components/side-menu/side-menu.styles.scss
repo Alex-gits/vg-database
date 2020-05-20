@@ -4,7 +4,7 @@
 
   &__home {
     font-family: 'Audiowide', cursive;
-    margin-bottom: 45px;
+    margin-bottom: 30px;
     font-size: 26px;
     
     a {
@@ -47,5 +47,9 @@
       transform: translateX(-50%);
       transition: color .1s linear;
     }
+  }
+
+  &__genres {
+    padding-left: 0;
   }
 }

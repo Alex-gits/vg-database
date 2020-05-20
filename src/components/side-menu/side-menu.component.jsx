@@ -13,6 +13,10 @@ const SideMenu = () => (
       <Link to='/games'>ALL GAMES</Link>
     </h3>
 
+    <h3 className='side-menu__home'>
+      <Link to='/genres'>GENRES</Link>
+    </h3>
+
     <div className='side-menu__box'>
       <p className='box-title'>New Releases</p>
       <ul className='box-list'>
@@ -56,38 +60,6 @@ const SideMenu = () => (
           <Link className='box-list__link' to='/top/best-of-all-time'>
             <i className="fas fa-crown"></i>
             All time top 100
-          </Link>
-        </li>
-      </ul>
-    </div>
-
-    <div className='side-menu__box'>
-      <p className='box-title'>
-        <Link className='box-list__link' to='/genres'>Genres</Link>
-      </p>
-      <ul className='box-list'>
-        <li className="box-list__item">
-          <Link className='box-list__link' to='/'>
-            <i className="fab fa-windows"></i>
-            PC
-          </Link>
-        </li>
-        <li className="box-list__item">
-          <Link className='box-list__link' to='/'>
-            <i className="fab fa-xbox"></i>
-            Xbox One
-          </Link>
-        </li>
-        <li className="box-list__item">
-          <Link className='box-list__link' to='/'>
-            <i className="fab fa-playstation"></i>
-            PlayStation 4
-          </Link>
-        </li>
-        <li className="box-list__item">
-          <Link className='box-list__link' to='/'>
-            <i className="fas fa-gamepad"></i>
-            Nintendo Switch
           </Link>
         </li>
       </ul>

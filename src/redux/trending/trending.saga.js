@@ -3,9 +3,9 @@ import { takeLatest, put, all, call } from 'redux-saga/effects';
 import { fetchTrendingSuccess, fetchTrendingFailure } from './trending.actions';
 import TrendingActionTypes from './trending.types';
 
-export function* fetchTrendingGamesAsync() {
+export function* fetchTrendingGamesAsync({ payload }) {
   try {
-    const response = yield fetch('https://api.rawg.io/api/games/lists/main?ordering=-relevance');
+    const response = yield fetch(`https://api.rawg.io/api/games/lists/main?ordering=-relevance&page_size=40&page=${payload}`);
     const trendingGames = yield response.json();
 
     yield put(fetchTrendingSuccess(trendingGames.results));

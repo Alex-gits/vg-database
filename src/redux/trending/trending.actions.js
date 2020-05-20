@@ -1,7 +1,8 @@
 import TrendingActionTypes from './trending.types';
 
-export const fetchTrendingStart = () => ({
-  type: TrendingActionTypes.FETCH_TRENDING_START
+export const fetchTrendingStart = page => ({
+  type: TrendingActionTypes.FETCH_TRENDING_START,
+  payload: page
 });
 
 export const fetchTrendingSuccess = trendingGames => ({
