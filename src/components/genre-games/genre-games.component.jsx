@@ -19,6 +19,10 @@ const GenreGames = ({ match, genre, fetchGenre, fetchGenreGames, genreGames }) =
     fetchGenreGames(match.params.slug);
   }, [fetchGenre, fetchGenreGames, match.params.slug]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     genre && genreGames ? 
     <div>

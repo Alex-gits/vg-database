@@ -1,6 +1,13 @@
+.game-over__overlay {
+  display: flex;
+}
+
 .game-overview {
-  padding: 25px 150px 70px;
-  width: 1200px;
+  padding: 25px 0 70px;
+  width: 900px;
+  margin-left: 150px;
+  margin-right: 70px;
+  padding-bottom: 200px;
 
   &__image-wrapper {
     height: 400px;
@@ -35,6 +42,10 @@
     p {
       font-size: 16px;
       padding: 0;
+    }
+
+    li {
+      margin-left: 20px;
     }
   }
 
@@ -73,5 +84,10 @@
       }
     }
   }
-}
 
+  &__video {
+    width: 810px;
+    height: 300px;
+    margin-top: 50px;
+  }
+}

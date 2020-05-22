@@ -7,6 +7,16 @@ export const selectGameOverview = createSelector(
   gameOverview => gameOverview.game
 );
 
+export const selectSimilarGames = createSelector(
+  [selectGame],
+  gameOverview => gameOverview.similarGames ? gameOverview.similarGames : []
+);
+
+export const selectYoutubeUrls = createSelector(
+  [selectGame],
+  gameOverview => gameOverview.ytUrls ? gameOverview.ytUrls : []
+);
+
 export const selectGameOverviewStatus = createSelector(
   [selectGame],
   gameOverview => gameOverview.loading
