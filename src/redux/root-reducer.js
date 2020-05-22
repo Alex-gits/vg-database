@@ -6,6 +6,7 @@ import gameOverviewReducer from './game-overview/game-overview.reducer';
 import bestGamesReducer from './best-games/best-games.reducer';
 import releasesReducer from './releases/releases.reducer';
 import genresReducer from './genres/genres.reducer';
+import searchReducer from './search/search.reducer';
 
 export default combineReducers({
   trending: trendingReducer,
@@ -13,5 +14,6 @@ export default combineReducers({
   gameOverview: gameOverviewReducer,
   bestGames: bestGamesReducer,
   releases: releasesReducer,
-  genres: genresReducer
+  genres: genresReducer,
+  search: searchReducer
 });

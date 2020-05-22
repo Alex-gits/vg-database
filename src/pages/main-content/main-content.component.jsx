@@ -6,33 +6,34 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import './main-content.styles.scss';
 
 import { selectTrendingGames } from '../../redux/trending/trending.selectors';
-import { fetchTrendingStart } from '../../redux/trending/trending.actions';
+import { fetchTrendingStart, fetchMoreTrendingStart, resetTrending } from '../../redux/trending/trending.actions';
 
 import GamePreviewItem from '../../components/game-preview-item/game-preview-item.component';
 import SectionHeader from '../../components/section-header/section-header.component';
 import Spinner from '../../components/spinner/spinner.component';
 
-const MainContent = ({ trendingGames, fetchTrending }) => {
+const MainContent = ({ trendingGames, fetchTrending, fetchMore, reset }) => {
   const [page, changePage] = useState(2);
 
   const fetchMoreGames = () => {
     changePage(page => page + 1);
-    return fetchTrending(page);
+    return fetchMore(page);
   }
 
   useEffect(() => {
-    fetchTrending(1);
-  }, [fetchTrending]);
+    fetchTrending()
+    return () => reset();
+  }, [fetchTrending, reset]);
 
   return (
     <div className='main-content'>
       <SectionHeader>Trending Games</SectionHeader>
         <InfiniteScroll
+          style={{overflow: 'hidden'}}
           dataLength={trendingGames.length}
           next={fetchMoreGames}
-          hasMore={page < 10 ? true : false}
+          hasMore={page < 5 ? true : false}
           loader={<Spinner />}
-          endMessage={<p style={{margin: '0 auto'}}>Thx for using the website!</p>}
         >
           {
             trendingGames.map(game => <GamePreviewItem game={game} key={game.id} />)
@@ -47,7 +48,9 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchTrending: page => dispatch(fetchTrendingStart(page)),
+  fetchTrending: () => dispatch(fetchTrendingStart()),
+  fetchMore: page => dispatch(fetchMoreTrendingStart(page)),
+  reset: () => dispatch(resetTrending())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

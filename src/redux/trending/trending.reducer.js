@@ -1,4 +1,5 @@
 import TrendingActionTypes from './trending.types';
+import { unionBy } from 'lodash/array';
 
 const INITIAL_STATE = {
   trendingGames: [],
@@ -6,9 +7,14 @@ const INITIAL_STATE = {
   error: null
 }
 
+const combineArrays = (state, payload) => {
+  return unionBy(state, payload, 'id');
+}
+
 const trendingReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case TrendingActionTypes.FETCH_TRENDING_START:
+    case TrendingActionTypes.FETCH_MORE_TRENDING_START:
       return {
         ...state,
         loading: true
@@ -16,14 +22,28 @@ const trendingReducer = (state = INITIAL_STATE, action) => {
     case TrendingActionTypes.FETCH_TRENDING_SUCCESS:
       return {
         ...state,
-        trendingGames: [...state.trendingGames, ...action.payload],
+        trendingGames: action.payload,
+        loading: false,
+        error: null
+      }
+    case TrendingActionTypes.FETCH_MORE_TRENDING_SUCCESS:
+      return {
+        ...state,
+        trendingGames: combineArrays(state.trendingGames, action.payload),
         loading: false,
         error: null
       }
     case TrendingActionTypes.FETCH_TRENDING_FAILURE:
+    case TrendingActionTypes.FETCH_MORE_TRENDING_FAILURE:
       return {
         ...state,
         error: action.payload,
+        trendingGames: [],
+        loading: false
+      }
+    case TrendingActionTypes.RESET_TRENDING:
+      return {
+        ...state,
         trendingGames: [],
         loading: false
       }
