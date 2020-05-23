@@ -3,10 +3,10 @@ import { withRouter } from 'react-router-dom';
 
 import './game-preview-item.styles.scss';
 
+import { getCroppedImage } from '../../utils/utils';
+
 const GamePreviewItem = ({ game, history }) => {
   const genres = Object.values(game.genres);
-  const gamePoster = game.background_image;
-  const croppedPoster = gamePoster ? gamePoster.slice(0, 28) + "crop/600/400/" + gamePoster.slice(28) : 'https://optica-nadin.ru/static/img/no-img.png';
 
   const playVideo = e => {
     const videoWrapper = e.target.closest('.game-preview');
@@ -41,7 +41,7 @@ const GamePreviewItem = ({ game, history }) => {
           <div
             className='game-preview__image'
             style={{
-              backgroundImage: `url(${croppedPoster})`
+              backgroundImage: `url(${getCroppedImage(game.background_image, "crop/600/400/")})`
             }}
           >
           </div>

@@ -1,14 +1,10 @@
 import TrendingActionTypes from './trending.types';
-import { unionBy } from 'lodash/array';
+import { combineArrays } from '../../utils/utils';
 
 const INITIAL_STATE = {
   trendingGames: [],
   loading: false,
   error: null
-}
-
-const combineArrays = (state, payload) => {
-  return unionBy(state, payload, 'id');
 }
 
 const trendingReducer = (state = INITIAL_STATE, action) => {

@@ -7,6 +7,11 @@ export const selectSearchResults = createSelector(
   search => search.searchResults ? search.searchResults : []
 );
 
+export const selectSearchResultsLength = createSelector(
+  [searchGames],
+  search => search.searchResults.length
+);
+
 export const selectSearchFetchingStatus = createSelector(
   [searchGames],
   search => search.loading

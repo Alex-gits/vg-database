@@ -3,13 +3,12 @@ import { withRouter } from 'react-router-dom';
 
 import './autocomplete-item.styles.scss';
 
+import { getCroppedImage } from '../../utils/utils';
+
 const AutocompleteItem = ({ game, history }) => {
   const visitTheGame = () => {
     history.push(`/games/${game.slug}`)
   }
-
-  const gamePoster = game.background_image;
-  const croppedPoster = gamePoster ? gamePoster.slice(0, 28) + "resize/420/-/" + gamePoster.slice(28) : 'https://optica-nadin.ru/static/img/no-img.png';
 
   return (
     <div className='autocomplete-item' onClick={visitTheGame}>
@@ -18,7 +17,7 @@ const AutocompleteItem = ({ game, history }) => {
           <span 
           className='autocomplete-item__image'
           style={{
-            backgroundImage: `url(${croppedPoster})`
+            backgroundImage: `url(${getCroppedImage(game.background_image, "resize/420/-/")})`
           }}
           ></span>
         </div>

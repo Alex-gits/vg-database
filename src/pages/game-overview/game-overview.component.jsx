@@ -21,11 +21,7 @@ const GameOverviewPage = ({ match, fetchGameStart, game, fetchSimilarGames, fetc
     fetchVideosUrls(match.params.slug);
   }, [fetchVideosUrls, match.params.slug]);
 
-
-  const gamePoster = game ? game.background_image : null;
-  const croppedPoster = game ? gamePoster.slice(0, 28) + "crop/600/400/" + gamePoster.slice(28) : null;
-
-  return game && ytUrls.length ? <GameInformation game={game} ytUrl={ytUrls[1].external_id} croppedPoster={croppedPoster} /> : <Spinner />
+  return game ? <GameInformation game={game} ytUrl={ytUrls.length ? ytUrls[1].external_id : null} /> : <Spinner />
 }
 
 const mapStateToProps = createStructuredSelector({

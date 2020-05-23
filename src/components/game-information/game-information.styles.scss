@@ -27,6 +27,13 @@
     justify-content: space-between;
   }
 
+  &__parent-platforms {
+    i {
+      margin: 0 5px;
+      font-size: 18px;
+    }
+  }
+
   &__about-title {
     font-size: 30px;
     color: #eb3b5a;

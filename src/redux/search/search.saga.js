@@ -8,12 +8,13 @@ export function* fetchSearchResultsAsync({ payload }) {
   try {
     if (payload.length <= 1) {
       yield put(fetchSearchResultsSuccess([]));
-    } else {
-      const result = yield fetch(`https://api.rawg.io/api/games?search=${payload}&page_size=5`);
-      const searchResults = yield result.json();
-  
-      yield put(fetchSearchResultsSuccess(searchResults.results))
-    }
+      return;
+    };
+
+    const result = yield fetch(`https://api.rawg.io/api/games?search=${payload}&page_size=5`);
+    const searchResults = yield result.json();
+
+    yield put(fetchSearchResultsSuccess(searchResults.results));
   } catch (error) {
     yield put(fetchSearchResultsFailure(error))
   }

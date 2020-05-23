@@ -14,6 +14,7 @@ export const fetchGenresFailure = error => ({
   payload: error
 });
 
+
 export const fetchExactGenreStart = slug => ({
   type: GenresActionTypes.FETCH_EXACT_GENRE_START,
   payload: slug

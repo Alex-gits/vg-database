@@ -32,7 +32,7 @@ const MainContent = ({ trendingGames, fetchTrending, fetchMore, reset }) => {
           style={{overflow: 'hidden'}}
           dataLength={trendingGames.length}
           next={fetchMoreGames}
-          hasMore={page < 5 ? true : false}
+          hasMore={page < 4 ? true : false}
           loader={<Spinner />}
         >
           {

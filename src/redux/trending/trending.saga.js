@@ -3,17 +3,6 @@ import { takeLatest, put, all, call } from 'redux-saga/effects';
 import { fetchTrendingSuccess, fetchTrendingFailure, fetchMoreTrendingSuccess, fetchMoreTrendingFailure } from './trending.actions';
 import TrendingActionTypes from './trending.types';
 
-export function* fetchMoreTrendingGamesAsync({ payload }) {
-  try {
-    const response = yield fetch(`https://api.rawg.io/api/games/lists/main?ordering=-relevance&page_size=40&page=${payload}`);
-    const trendingGames = yield response.json();
-
-    yield put(fetchMoreTrendingSuccess(trendingGames.results));
-  } catch (error) {
-    yield put(fetchMoreTrendingFailure(error));
-  }
-}
-
 export function* fetchTrendingGamesAsync() {
   try {
     const response = yield fetch(`https://api.rawg.io/api/games/lists/main?ordering=-relevance&page_size=40`);
@@ -22,6 +11,17 @@ export function* fetchTrendingGamesAsync() {
     yield put(fetchTrendingSuccess(trendingGames.results));
   } catch (error) {
     yield put(fetchTrendingFailure(error));
+  }
+}
+
+export function* fetchMoreTrendingGamesAsync({ payload }) {
+  try {
+    const response = yield fetch(`https://api.rawg.io/api/games/lists/main?ordering=-relevance&page_size=40&page=${payload}`);
+    const trendingGames = yield response.json();
+
+    yield put(fetchMoreTrendingSuccess(trendingGames.results));
+  } catch (error) {
+    yield put(fetchMoreTrendingFailure(error));
   }
 }
 

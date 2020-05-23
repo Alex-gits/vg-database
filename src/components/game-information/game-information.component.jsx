@@ -6,7 +6,9 @@ import './game-information.styles.scss';
 import SectionHeader from '../section-header/section-header.component';
 import SimilarGames from '../similar-games/similar-games.component';
 
-const GameInformation = ({ game, croppedPoster, ytUrl, history }) => {
+import { getCroppedImage, getPlatformIcon } from '../../utils/utils';
+
+const GameInformation = ({ game, ytUrl, history }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -17,12 +19,12 @@ const GameInformation = ({ game, croppedPoster, ytUrl, history }) => {
         <div 
           className='game-overview__image-wrapper'
           style={{
-            backgroundImage:  `linear-gradient(rgba(15, 15, 15, 0), rgb(21, 21, 21)), linear-gradient(rgba(21, 21, 21, 0.3), rgba(21, 21, 21, 0.5)), url(${croppedPoster})`
+            backgroundImage:  `linear-gradient(rgba(15, 15, 15, 0), rgb(21, 21, 21)), linear-gradient(rgba(21, 21, 21, 0.3), rgba(21, 21, 21, 0.5)), url(${getCroppedImage(game.background_image, "crop/600/400/")})`
           }}
         >
           <div className='game-overview__title-wrapper'>
-            <div>
-              Platforms:
+            <div className='game-overview__parent-platforms'>
+              {game.parent_platforms.map(platform => <i key={platform.platform.slug} className={getPlatformIcon(platform.platform.name)}></i>)}
             </div>
             <SectionHeader>{game.name}</SectionHeader>
           </div>
@@ -75,7 +77,7 @@ const GameInformation = ({ game, croppedPoster, ytUrl, history }) => {
         </div>
         <div>
         {
-          game.clip ?
+          ytUrl ?
           
           <div className='game-overview__video'>
             <iframe 

@@ -6,8 +6,8 @@
   }
 }
 
-.genre-games {
-  grid-template-columns: repeat(4, 382.75px);
-  display: grid;
-  grid-gap: 24px 24px;
+.genre-games__infinity-scroll {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
