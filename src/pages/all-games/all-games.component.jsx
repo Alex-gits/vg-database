@@ -11,23 +11,26 @@ import { fetchAllGamesStart, fetchMoreGamesStart, resetGames } from '../../redux
 import Spinner from '../../components/spinner/spinner.component';
 import GamePreviewItem from '../../components/game-preview-item/game-preview-item.component';
 import SectionHeader from '../../components/section-header/section-header.component';
+import PlatformSelector from '../../components/platfrom-selector/platform-selector.component';
 
 const AllGamesPage = ({ allGames, fetchAllGamesStart, fetchMore, reset }) => {
   const [page, changePage] = useState(2);
+  const [platform, changePlatform] = useState(0);
 
   const fetchMoreGames = () => {
     changePage(page => page + 1);
-    return fetchMore(page);
+    return fetchMore({page, platform});
   }
 
   useEffect(() => {
-    fetchAllGamesStart();
+    fetchAllGamesStart(platform);
     return () => reset();
-  }, [fetchAllGamesStart, reset])
+  }, [fetchAllGamesStart, reset, platform]);
 
   return (
     <div className='all-games'>
       <SectionHeader>All games</SectionHeader>
+      <PlatformSelector changePlatform={changePlatform} type={platform} />
       <div className='all-games__wrapper'>
         <InfiniteScroll
           className='all-games__infinity-scroll'
@@ -47,7 +50,7 @@ const AllGamesPage = ({ allGames, fetchAllGamesStart, fetchMore, reset }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchAllGamesStart: () => dispatch(fetchAllGamesStart()),
+  fetchAllGamesStart: platform => dispatch(fetchAllGamesStart(platform)),
   fetchMore: page => dispatch(fetchMoreGamesStart(page)),
   reset: () => dispatch(resetGames())
 });

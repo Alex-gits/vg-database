@@ -12,9 +12,15 @@ import {
 
 import AllGamesActionTypes from './all-games.types';
 
-export function* fetchAllGamesAsync() {
+const apiUrl = 'https://api.rawg.io/api/games';
+
+export function* fetchAllGamesAsync({ payload }) {
   try {
-    const response = yield fetch('https://api.rawg.io/api/games?page_size=40');
+    console.log(payload)
+    const response = payload === 0 ?
+    yield fetch(`${apiUrl}?page_size=40`) :
+    yield fetch(`${apiUrl}?page_size=40&parent_platforms=${payload}`)
+
     const allGames = yield response.json();
 
     yield put(fetchAllGamesSuccess(allGames.results));
@@ -25,7 +31,10 @@ export function* fetchAllGamesAsync() {
 
 export function* fetchMoreGamesAsync({ payload }) {
   try {
-    const response = yield fetch(`https://api.rawg.io/api/games?page_size=40&page=${payload}`);
+    const response = payload.platform === 0 ?
+    yield fetch(`${apiUrl}?page_size=40&page=${payload.page}`) :
+    yield fetch(`${apiUrl}?page_size=40&page=${payload.page}&parent_platforms=${payload.platform}`)
+    
     const moreGames = yield response.json();
 
     yield put(fetchMoreGamesSuccess(moreGames.results));
@@ -36,7 +45,10 @@ export function* fetchMoreGamesAsync({ payload }) {
 
 export function* fetchGenreGamesAsync({ payload }) {
   try {
-    const response = yield fetch(`https://api.rawg.io/api/games?genres=${payload}&page_size=40`);
+    const response = payload.platform === 0 ?
+    yield fetch(`${apiUrl}?genres=${payload.genre}&page_size=40`) :
+    yield fetch(`${apiUrl}?genres=${payload.genre}&parent_platforms=${payload.platform}&page_size=40`);
+
     const genreGames = yield response.json();
 
     yield put(fetchGenreGamesSuccess(genreGames.results));
@@ -47,8 +59,10 @@ export function* fetchGenreGamesAsync({ payload }) {
 
 export function* fetchMoreGenreGamesAsync({ payload }) {
   try {
-    console.log(payload)
-    const response = yield fetch(`https://api.rawg.io/api/games?genres=${payload.genre}&page=${payload.page}&page_size=40`);
+    const response = payload.platform === 0 ? 
+    yield fetch(`${apiUrl}?genres=${payload.genre}&page=${payload.page}&page_size=40`) :
+    yield fetch(`${apiUrl}?genres=${payload.genre}&page=${payload.page}&parent_platforms=${payload.platform}&page_size=40`)
+
     const genreGames = yield response.json();
 
     yield put(fetchMoreGenreGamesSuccess(genreGames.results));

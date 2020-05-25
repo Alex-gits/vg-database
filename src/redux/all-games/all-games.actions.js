@@ -1,7 +1,8 @@
 import AllGamesActionTypes from './all-games.types';
 
-export const fetchAllGamesStart = () => ({
-  type: AllGamesActionTypes.FETCH_ALLGAMES_START
+export const fetchAllGamesStart = platform => ({
+  type: AllGamesActionTypes.FETCH_ALLGAMES_START,
+  payload: platform
 });
 
 export const fetchAllGamesSuccess = allGames => ({
@@ -14,9 +15,9 @@ export const fetchAllGamesFailure = error => ({
   payload: error
 });
 
-export const fetchMoreGamesStart = page => ({
+export const fetchMoreGamesStart = info => ({
   type: AllGamesActionTypes.FETCH_MORE_GAMES_START,
-  payload: page
+  payload: info
 });
 
 export const fetchMoreGamesSuccess = allGames => ({
@@ -29,9 +30,9 @@ export const fetchMoreGamesFailure = error => ({
   payload: error
 });
 
-export const fetchGenreGamesStart = genre => ({
+export const fetchGenreGamesStart = info => ({
   type: AllGamesActionTypes.FETCH_GENRE_GAMES_START,
-  payload: genre
+  payload: info
 });
 
 export const fetchGenreGamesSuccess = genreGames => ({
