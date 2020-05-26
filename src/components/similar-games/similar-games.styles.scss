@@ -20,6 +20,32 @@
       @media screen and (max-width: 414px) {
         margin: 3px 0;
       }
+
+      .game-preview__content {
+        @media screen and (max-width: 414px) {
+          height: 211px;
+        }
+
+        @media screen and (max-width: 411px) {
+          height: 207px;
+        }
+
+        @media screen and (max-width: 375px) {
+          height: 197px;
+        }
+
+        @media screen and (max-width: 360px) {
+          height: 188px;
+        }
+
+        @media screen and (max-width: 360px) {
+          height: 188px;
+        }
+
+        @media screen and (max-width: 320px) {
+          height: 167px;
+        }
+      }
     }
   }
   
