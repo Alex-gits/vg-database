@@ -12,17 +12,22 @@ function App({ location }) {
 
   useEffect(() => {
     return () => changeStatus(true);
-  }, [location.pathname])
+  }, [location.pathname]);
 
   const switchStatus = () => {
     changeStatus(menuStatus => !menuStatus);
-  }
+  };
 
+  const closeMenu = () => {
+    if (menuStatus === true) return;
+    changeStatus(true);
+  }
+ 
   return (
-    <div className="App">
+    <div className="App" onClick={closeMenu} onTouchMove={closeMenu}>
       <Header switchStatus={switchStatus} status={menuStatus} />
       <div className='directory'>
-        <SideMenu status={menuStatus} switchStatus={switchStatus} />
+        <SideMenu status={menuStatus} changeStatus={changeStatus} switchStatus={switchStatus} />
         <Content />
       </div>
     </div>

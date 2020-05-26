@@ -16,7 +16,7 @@ const whiteColor = {
   color: '#fff'
 }
 
-const Header = ({ fetchSearch, location, switchStatus, status }) => {
+const Header = ({ fetchSearch, location, switchStatus, status, closeMenu }) => {
   const [focused, changeFocus] = useState(false);
   const [inputValue, changeValue] = useState('');
 
@@ -70,7 +70,7 @@ const Header = ({ fetchSearch, location, switchStatus, status }) => {
         focused ? <Autocomplete focused={focused} /> : null
       }
       <div className='header__button-wrapper'>
-        <button onClick={switchStatus} className='header__button-menu' style={status ? null : whiteColor}>
+        <button onClick={e => {switchStatus(); e.stopPropagation()}} className='header__button-menu' style={status ? null : whiteColor}>
           <i className="fas fa-bars"></i>
         </button>
       </div>

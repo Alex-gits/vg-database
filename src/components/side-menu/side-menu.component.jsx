@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './side-menu.styles.scss';
 
 const SideMenu = ({ status, switchStatus }) => (
-  <div className={`side-menu ${status ? 'side-menu__close' : '' }`}>
+  <div className={`side-menu ${status ? 'side-menu__close' : '' }`} onClick={e => e.stopPropagation()}>
     <h3 className='side-menu__home'>
       <Link to='/'>HOME</Link>
     </h3>
