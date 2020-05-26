@@ -32,7 +32,7 @@ const GenreGames = ({ match, genre, fetchGenre, fetchGenreGames, genreGames, fet
 
   return (
     genre && genreGames ? 
-    <div>
+    <div className='genre-games__container'>
       <div className='genre-info'>
         <SectionHeader className='genre-info__title'>{genre.name}</SectionHeader>
         <p className='genre-info__description' dangerouslySetInnerHTML={{ __html: genre.description }}></p>

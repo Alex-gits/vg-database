@@ -13,7 +13,7 @@ const TopListItem = ({ game, index, history }) => {
       </p>
       <div className='top-game__info-container'>
         <span className='top-game__info'>Platforms: </span> 
-        <span>{game.parent_platforms.map(platform => `${platform.platform.name} `)}</span>
+        <span>{game.parent_platforms.filter((platform, index) => index < 3).map(platform => `${platform.platform.name} `)}</span>
       </div>
     </div>
   )

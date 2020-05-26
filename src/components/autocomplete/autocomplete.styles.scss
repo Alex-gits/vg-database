@@ -1,10 +1,47 @@
 .autocomplete {
-  width: 1370px;
+  width: 75%;
   position: absolute;
   top: 75px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 57%;
+  transform: translateX(-57%);
   background: black;
   z-index: 999;
   border-radius: 10px;
+
+  
+  @media screen and (max-width: 1520px) {
+    width: 70%;
+  }
+
+  @media screen and (max-width: 1370px) {
+    width: 65%;
+    left: 58%;
+    transform: translateX(-58%);
+  }
+
+  @media screen and (max-width: 1120px) {
+    width: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 55%;
+    left: 58%;
+    transform: translateX(-58%);
+  }
+
+  @media screen and (max-width: 885px) {
+    width: 70%;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 75%;
+  }
+
+  @media screen and (max-width: 414px) {
+    width: 80%;
+    left: 10%;
+    transform: translateX(-10%);
+  }
 }

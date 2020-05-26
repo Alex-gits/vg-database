@@ -1,24 +1,30 @@
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import './content.styles.scss';
+import Spinner from '../spinner/spinner.component';
 
-import MainContent from '../../pages/main-content/main-content.component';
-import AllGamesPage from '../../pages/all-games/all-games.component';
-import GameOverviewPage from '../../pages/game-overview/game-overview.component';
-import TopGames from '../../pages/top-games/top-games.component';
-import ReleasesPage from '../../pages/releases/releases.component';
-import GenresPage from '../../pages/genres/genres.component';
+
+const MainContent = lazy(() => import('../../pages/main-content/main-content.component'));
+const AllGamesPage = lazy(() => import('../../pages/all-games/all-games.component'));
+const GameOverviewPage = lazy(() => import('../../pages/game-overview/game-overview.component'));
+const TopGames = lazy(() => import('../../pages/top-games/top-games.component'));
+const ReleasesPage = lazy(() => import('../../pages/releases/releases.component'));
+const GenresPage = lazy(() => import('../../pages/genres/genres.component'));
+
+
 
 const Content = () => (
   <div className='content'>
     <Switch>
-      <Route exact path='/' component={MainContent} />
-      <Route exact path='/games' component={AllGamesPage} />
-      <Route path='/games/:slug' component={GameOverviewPage} />
-      <Route path='/top/:time' component={TopGames} />
-      <Route path='/releases/:period' component={ReleasesPage} />
-      <Route path='/genres' component={GenresPage} />
+      <Suspense fallback={<Spinner />}>
+        <Route exact path='/' component={MainContent} />
+        <Route exact path='/games' component={AllGamesPage} />
+        <Route path='/games/:slug' component={GameOverviewPage} />
+        <Route path='/top/:time' component={TopGames} />
+        <Route path='/releases/:period' component={ReleasesPage} />
+        <Route path='/genres' component={GenresPage} />
+      </Suspense>
     </Switch>
   </div>
 );

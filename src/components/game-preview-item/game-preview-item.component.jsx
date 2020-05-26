@@ -27,9 +27,8 @@ const GamePreviewItem = ({ game, history }) => {
       <div className='game-preview__content'>
         {
           game.clip ?
-          
           <div className='game-preview__video'>
-            <video className='test' src={game.clip.clip} playsInline muted loop></video>
+            <video src={game.clip.clip} playsInline muted></video>
           </div>
           : 
           <div className='game-preview__no-video'>
@@ -53,7 +52,7 @@ const GamePreviewItem = ({ game, history }) => {
           Genres:
           <div>
             {
-              genres.filter((genre, index) => index < 4).map(genre => <span className='genre-item' key={genre.slug}>{genre.name}</span> )
+              genres.filter((genre, index) => index < 2).map(genre => <span className='genre-item' key={genre.slug}>{genre.name}</span> )
             }
           </div>
         </div>

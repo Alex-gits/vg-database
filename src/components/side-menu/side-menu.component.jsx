@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './side-menu.styles.scss';
 
-const SideMenu = () => (
-  <div className='side-menu'>
+const SideMenu = ({ status, switchStatus }) => (
+  <div className={`side-menu ${status ? 'side-menu__close' : '' }`}>
     <h3 className='side-menu__home'>
       <Link to='/'>HOME</Link>
     </h3>
@@ -63,6 +63,10 @@ const SideMenu = () => (
           </Link>
         </li>
       </ul>
+    </div>
+
+    <div className='box-list__button-wrapper'>
+      <i onClick={switchStatus} className="box-list__close-button fas fa-times"></i>
     </div>
   </div>
 );

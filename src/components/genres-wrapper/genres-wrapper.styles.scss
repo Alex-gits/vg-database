@@ -2,4 +2,32 @@
   grid-template-columns: repeat(4, 382.75px);
   display: grid;
   grid-gap: 24px 24px;
+
+  @media screen and (max-width: 1876px) {
+    grid-template-columns: repeat(3, 382.75px);
+  }
+  
+  @media screen and (max-width: 1680px) {
+    grid-template-columns: repeat(3, 382.75px);
+  }
+
+  @media screen and (max-width: 1470px) {
+    grid-template-columns: repeat(2, 420.75px);
+  }
+
+  @media screen and (max-width: 1150px) {
+    grid-template-columns: repeat(2, 322.75px);
+  }
+
+  @media screen and (max-width: 910px) {
+    grid-template-columns: repeat(1, 420.75px);
+  }
+
+  @media screen and (max-width: 568px) {
+    grid-template-columns: repeat(1, 350.75px);
+  }
+
+  @media screen and (max-width: 375px) {
+    grid-template-columns: repeat(1, 300.75px);
+  }
 }

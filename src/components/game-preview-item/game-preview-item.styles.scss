@@ -3,6 +3,11 @@
   margin-bottom: 25px;
   transition: transform .2s linear;
 
+  @media screen and (max-width: 1440px) {
+    margin: 0 20px;
+    margin-bottom: 25px;
+  }
+
   &:hover {
     transform: scale(1.02);
   }
@@ -32,12 +37,36 @@
     -khtml-user-select: none;
     -moz-user-select: none; 
     -ms-user-select: none;
+
+    @media screen and (max-width: 320px) {
+      font-size: 28px;
+    }
   }
 
   &__content {
     width: 100%;
     height: 215px;
     position: relative;
+
+    @media screen and (max-width: 414px) {
+      height: 199px;
+    }
+
+    @media screen and (max-width: 411px) {
+      height: 198px;
+    }
+
+    @media screen and (max-width: 375px) {
+      height: 178px;
+    }
+
+    @media screen and (max-width: 360px) {
+      height: 169px;
+    }
+
+    @media screen and (max-width: 320px) {
+      height: 146px;
+    }
   }
 
   &__image {
@@ -85,6 +114,10 @@
     padding: 10px;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
+
+    @media screen and (max-width: 320px) {
+      padding-top: 0;
+    }
   }
 
   &__name {

@@ -13,7 +13,7 @@ const TopList = ({ bestGames, loading, time }) => (
   <div className='top-list'>
     <div className='top-list__image-wrapper'>
       <div className='game-overview__title-wrapper'>
-        <SectionHeader>
+        <SectionHeader bottom='bottom' >
           {
             time === 'best-of-all-time'
             ? 'Top games of all Time'

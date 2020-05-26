@@ -1,13 +1,27 @@
 .genre-info {
   margin-bottom: 35px;
+  width: 100%;
 
   &__description {
     font-size: 18px;
+    width: 100%;
+
+    @media screen and (max-width: 414px) {
+      display: none;
+    }
   }
+}
+
+.genre-games__container {
+  max-width: 100%;
 }
 
 .genre-games__infinity-scroll {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+
+  @media screen and (max-width: 1132px) {
+    justify-content: center;
+  }
 }

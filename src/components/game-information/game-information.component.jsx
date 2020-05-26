@@ -14,7 +14,7 @@ const GameInformation = ({ game, ytUrl, history }) => {
   });
 
   return (
-    <div className='game-over__overlay'>
+    <div className='game-overview__overlay'>
       <div className='game-overview'>
         <div 
           className='game-overview__image-wrapper'
@@ -45,7 +45,7 @@ const GameInformation = ({ game, ytUrl, history }) => {
             <div className='game-overview__details-item'>
               <p>Publisher:</p> {game.publishers.map(publisher => <span key={publisher.slug} className='game-overview__details-item'>{publisher.name}</span>)}
             </div>
-            <div className='game-overview__details-item'>
+            <div className='game-overview__details-item game-overview__details-genres'>
               <p>Genres:</p> {game.genres.map(genre => (
                 <span key={genre.slug} className='game-overview__details-item game-overview__genres' onClick={() => history.push(`/genres/${genre.slug}`)}>
                   {genre.name}
@@ -80,9 +80,7 @@ const GameInformation = ({ game, ytUrl, history }) => {
           ytUrl ?
           
           <div className='game-overview__video'>
-            <iframe 
-              width="900" 
-              height="455" 
+            <iframe  className='game-overview__iframe'
               title={game.slug}
               src={`https://www.youtube.com/embed/${ytUrl}`} 
               frameBorder="0" 

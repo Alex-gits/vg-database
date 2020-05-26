@@ -7,6 +7,7 @@ import { fetchGenresStart } from '../../redux/genres/genres.actions';
 
 import GenrePreviewItem from '../genre-preview-item/genre-preview-item.component';
 import Spinner from '../spinner/spinner.component';
+import SectionHeader from '../section-header/section-header.component';
 
 import './genres-wrapper.styles.scss';
 
@@ -16,10 +17,13 @@ const GenresWrapper = ({ loading, genres, fetchGenreGames }) => {
   }, [fetchGenreGames]);
 
   return (
-    <div className='genres-container'>
-      {
-        loading ? <Spinner /> : genres.map(genre => <GenrePreviewItem key={genre.id} genre={genre} />)
-      }
+    <div>
+      <SectionHeader>Genres</SectionHeader>
+      <div className='genres-container'>
+        {
+          loading ? <Spinner /> : genres.map(genre => <GenrePreviewItem key={genre.id} genre={genre} />)
+        }
+      </div>
     </div>
   )
 }

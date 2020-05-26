@@ -1,8 +1,35 @@
 .similar-games {
   padding-top: 20px;
+
+  &__container {
+    @media screen and (max-width: 1460px) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    div {
+      @media screen and (max-width: 1460px) {
+        margin-right: 30px;
+      }
+
+      @media screen and (max-width: 1160px) {
+        margin-right: 0;
+      }
+
+      @media screen and (max-width: 414px) {
+        margin: 3px 0;
+      }
+    }
+  }
+  
   &__title {
     font-size: 26px;
     font-family: 'Audiowide', cursive;
     margin-bottom: 40px;
+
+    @media screen and (max-width: 1460px) {
+      text-align: center;
+    }
   }
 }

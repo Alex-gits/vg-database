@@ -1,13 +1,37 @@
-.game-over__overlay {
+.game-overview__overlay {
   display: flex;
+
+  @media screen and (max-width: 1460px) {
+    display: block;
+  }
 }
 
 .game-overview {
   padding: 25px 0 70px;
-  width: 900px;
   margin-left: 150px;
   margin-right: 70px;
-  padding-bottom: 200px;
+  width: 60%;
+
+  @media screen and (max-width: 1460px) {
+    width: 80%;
+  }
+
+  @media screen and (max-width: 1380px) {
+    margin-left: 100px;
+  }
+
+  @media screen and (max-width: 1260px) {
+    margin-left: 50px;
+  }
+
+  @media screen and (max-width: 1210px) {
+    margin: 0 auto;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 95%;
+    padding-bottom: 0;
+  }
 
   &__image-wrapper {
     height: 400px;
@@ -16,6 +40,10 @@
     background-position: 40%;
     background-size: cover;
     background-repeat: no-repeat;
+
+    @media screen and (max-width: 411px) {
+      height: 360px;
+    }
   }
 
   &__title-wrapper {
@@ -68,9 +96,21 @@
     flex-wrap: wrap;
     color: grey;
 
+    @media screen and (max-width: 414px) {
+      width: 100%;
+    }
+
     &-item {
       width: 35%;
       margin-bottom: 20px;
+
+      @media screen and (max-width: 414px) {
+        &:last-of-type {
+          width: 100%;
+          margin-bottom: 0;
+        }
+
+      }
 
       span {
         text-decoration: underline;
@@ -90,11 +130,65 @@
         font-weight: 700;
       }
     }
+
+    &-genres {
+      @media screen and (max-width: 414px) {
+        display: flex;
+        flex-direction: column;
+
+        .game-overview__genres {
+          margin-bottom: 5px;
+        }
+      }
+    }
   }
 
   &__video {
-    width: 810px;
-    height: 300px;
+    width: 100%;
     margin-top: 50px;
+
+    @media screen and (max-width: 411px) {
+      margin: 0 auto;
+    }
+  }
+
+  &__iframe {
+    width: 900px;
+    height: 455px;
+
+    @media screen and (max-width: 1300px) {
+      width: 90%;
+      height: 400px;
+    }
+
+    @media screen and (max-width: 900px) {
+      width: 100%;
+      height: 368px;
+    }
+
+    @media screen and (max-width: 460px) {
+      width: 380px;
+      height: 216px;
+    }
+
+    @media screen and (max-width: 414px) {
+      width: 365px;
+      height: 205px;
+    }
+
+    @media screen and (max-width: 375px) {
+      width: 332px;
+      height: 188px;
+    }
+
+    @media screen and (max-width: 360px) {
+      width: 320px;
+      height: 180px;
+    }
+
+    @media screen and (max-width: 320px) {
+      width: 284px;
+      height: 162px;
+    }
   }
 }

@@ -3,13 +3,27 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   height: 80px;
   padding: 0 35px;
+
+  @media screen and (max-width: 560px) {
+    padding: 0 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #151515;
+    z-index: 999999999999;
+  }
 
   .logo-container {
     height: 100%;
     width: 40px;
     padding-top: 22px;
+
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
 
     .logo {
       fill: #eb3b5a;
@@ -21,6 +35,10 @@
     font-weight: 700;
     font-size: 20px;
     font-family: 'Audiowide', cursive;
+
+    @media screen and (max-width: 990px) {
+      display: none;
+    }
   }
 
   &__input-wrapper {
@@ -30,6 +48,30 @@
     border-radius: 20px;
     padding-left: 10px;
     transition: all .2s linear;
+
+    @media screen and (max-width: 1520px) {
+      width: 70%;
+    }
+
+    @media screen and (max-width: 1320px) {
+      width: 65%;
+    }
+
+    @media screen and (max-width: 1120px) {
+      width: 60%;
+    }
+
+    @media screen and (max-width: 1020px) {
+      width: 55%;
+    }
+
+    @media screen and (max-width: 885px) {
+      width: 70%;
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 80%;
+    }
 
     &:hover {
       background-color: white;
@@ -41,7 +83,7 @@
   }
 
   &__input {
-    width: 98%;
+    width: 93%;
     height: 100%;
     background-color: transparent;
     font-size: 18px;
@@ -50,8 +92,25 @@
     color: white;
     transition: all .2s linear;
 
+    @media screen and (max-width: 560px) {
+      width: 89%;
+    }
+
+    @media screen and (max-width: 320px) {
+      width: 83%;
+      font-size: 14px;
+    }
+
+    @media screen and (max-width: 350px) {
+      width: 80%;
+    }
+
     &::placeholder {
       font-size: 16px;
+
+      @media screen and (max-width: 375px) {
+        font-size: 14px;
+      }
     }
 
     &:focus {
@@ -69,9 +128,38 @@
     }
   }
 
-  &__title-wrapper {
+  &__link-wrapper {
     font-weight: 700;
     font-size: 20px;
     font-family: 'Audiowide', cursive;
+
+    @media screen and (max-width: 990px) {
+      display: none;
+    }
   }
+  
+  &__button-menu {
+    padding: 8px 10px 5px;
+    margin-right: 10px;
+    background-color: transparent;
+    color: #eb3b5a;
+    font-size: 20px;
+    display: none;
+
+    @media screen and (max-width: 990px) {
+      display: unset;
+    }
+  }
+}
+
+.rawg {
+  text-align: center;
+
+  a {
+    color: #eb3b5a;
+  }
+}
+
+.link-info {
+  font-weight: 400;
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
+import './genres.styles.scss';
+
 
 import GenresWrapper from '../../components/genres-wrapper/genres-wrapper.component';
 import GenreGames from '../../components/genre-games/genre-games.component';

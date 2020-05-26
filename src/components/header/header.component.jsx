@@ -12,7 +12,11 @@ import { ReactComponent as Logo } from '../../assets/game.svg';
 import { fetchSearchResultsStart } from '../../redux/search/search.actions';
 import { selectSearchResults } from '../../redux/search/search.selectors';
 
-const Header = ({ fetchSearch, location }) => {
+const whiteColor = {
+  color: '#fff'
+}
+
+const Header = ({ fetchSearch, location, switchStatus, status }) => {
   const [focused, changeFocus] = useState(false);
   const [inputValue, changeValue] = useState('');
 
@@ -40,9 +44,9 @@ const Header = ({ fetchSearch, location }) => {
         <span><Logo className='logo' /></span>
       </div>
       <div className='header__title'>
-        VG GAMES
+        VG DATABASE
       </div>
-  
+
       <div className='header__input-wrapper'>
         <span className='header__input-icon'>
           <i className="fas fa-search"></i>
@@ -51,19 +55,25 @@ const Header = ({ fetchSearch, location }) => {
           type="text"
           value={inputValue}
           onBlur={switchFocus} 
-          onFocus={switchFocus} 
+          onFocus={switchFocus}
           onChange={searchBegin}
           className='header__input' 
           placeholder='Search...' 
         />
       </div>
-  
-      <div className='header__title-wrapper'>
-        GAME DATABASE
+
+      <div className='header__link-wrapper'>
+        <p className='link-info'>Powered by</p>
+        <p className='rawg'><a href="https://rawg.io/apidocs" rel="noopener noreferrer" target="_blank">RAWG</a></p>
       </div>
       {
         focused ? <Autocomplete focused={focused} /> : null
       }
+      <div className='header__button-wrapper'>
+        <button onClick={switchStatus} className='header__button-menu' style={status ? null : whiteColor}>
+          <i className="fas fa-bars"></i>
+        </button>
+      </div>
     </div>
   )
 }
