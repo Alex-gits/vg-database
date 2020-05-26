@@ -28,7 +28,7 @@ const GamePreviewItem = ({ game, history }) => {
         {
           game.clip ?
           <div className='game-preview__video'>
-            <video src={game.clip.clip} playsInline muted></video>
+            <video src={game.clip.clip} playsInline muted loop></video>
           </div>
           : 
           <div className='game-preview__no-video'>
