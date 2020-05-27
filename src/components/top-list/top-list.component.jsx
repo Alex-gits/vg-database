@@ -12,8 +12,8 @@ import { selectTopGames, selectBestGamesFetchingStatus } from '../../redux/best-
 const TopList = ({ bestGames, loading, time }) => (
   <div className='top-list'>
     <div className='top-list__image-wrapper'>
-      <div className='game-overview__title-wrapper'>
-        <SectionHeader bottom='bottom' >
+      <div className='top-list__title-wrapper'>
+        <SectionHeader bottoms={true} >
           {
             time === 'best-of-all-time'
             ? 'Top games of all Time'

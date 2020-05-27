@@ -15,13 +15,14 @@
     background-position: 0;
     background-size: cover;
     background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0 0 5px 15px;
 
     @media screen and (max-width: 768px) {
       width: 100%;
+      padding: 0;
     }
-  }
-
-  &__title-wrapper {
-    text-align: center;
   }
 }
