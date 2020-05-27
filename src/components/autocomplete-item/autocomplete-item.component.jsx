@@ -28,7 +28,7 @@ const AutocompleteItem = ({ game, history }) => {
       <p className='autocomplete-item__platforms'>
         Platforms: 
         {
-          game.platforms.map(platform => <span className='autocomplete-item__platform-name' key={platform.platform.slug}>{platform.platform.name}</span>)
+          game.platforms ? game.platforms.map(platform => <span className='autocomplete-item__platform-name' key={platform.platform.slug}>{platform.platform.name}</span>) : ' Will be added soon'
         }
       </p>
     </div>
