@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import './App.scss';
@@ -18,10 +18,10 @@ function App({ location }) {
     changeStatus(menuStatus => !menuStatus);
   };
 
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     if (menuStatus === true) return;
     changeStatus(true);
-  }
+  }, [menuStatus])
  
   return (
     <div className="App" onClick={closeMenu} onTouchMove={closeMenu}>
