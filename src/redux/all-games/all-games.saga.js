@@ -16,7 +16,6 @@ const apiUrl = 'https://api.rawg.io/api/games';
 
 export function* fetchAllGamesAsync({ payload }) {
   try {
-    console.log(payload)
     const response = payload === 0 ?
     yield fetch(`${apiUrl}?page_size=40`) :
     yield fetch(`${apiUrl}?page_size=40&parent_platforms=${payload}`)
